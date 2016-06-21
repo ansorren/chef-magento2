@@ -1,0 +1,10 @@
+{
+  "run_list": [
+    "recipe[nginx]",
+    "recipe[mysql::client]",
+    "recipe[mysql::server]",
+    "recipe[php]",
+    "recipe[php::module_mysql]",
+    "recipe[php-fpm]"
+  ]
+}
