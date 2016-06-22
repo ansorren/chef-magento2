@@ -1,0 +1,13 @@
+{
+
+  "run_list": [
+    // "recipe[magento2::apt-update]",
+    // "recipe[git]",
+    //"recipe[nginx]",
+    // "recipe[magento2::mysql]",
+    //"recipe[magento2::php55]",
+    // "recipe[php::module_mysql]",
+    // "recipe[php-fpm]",
+    "recipe[magento2]"
+  ]
+}

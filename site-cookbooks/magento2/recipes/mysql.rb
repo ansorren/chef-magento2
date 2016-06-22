@@ -1,5 +1,5 @@
 
-execute "Install php5.6" do 
+execute "Install php5.6" do
     command "apt-get install -y mysql-client-core-5.6"
     action :run
 end
