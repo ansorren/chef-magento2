@@ -25,12 +25,26 @@ case node[:platform]
     end
     
 
-    #  Download Magento2 and Install Modules
-    # execute "Download Magento2" do 
-    #   command "cd /var/www/html && git clone https://github.com/magento/magento2.git && cd magento2 && composer install"
-    #   action :run
-    # end
+    execute "Create /var/www/ dir if not exists" do
+     command "mkdir -p /var/www/"
+     action :run
+    end
 
+
+    directory "/var/www/" do
+      owner 'vagrant'
+      group 'root'
+      mode '777'
+      recursive true
+    end
+
+    #  Download Magento2 and Install Modules
+    execute "Download Magento2" do 
+      command "if cd /var/www/magento2; then cd /var/www/magento2 && git pull; else git clone  https://github.com/magento/magento2.git; fi "
+      action :run
+    end
+
+    #&& cd /var/www/magento2 && composer install
     #  Create Database
     execute "Create Database" do 
       command 'echo "CREATE DATABASE if not exists magento2" | mysql -u root -pilikerandompasswords'
@@ -38,7 +52,7 @@ case node[:platform]
     end
 
     execute "Setup" do
-      command "cd /var/www/html  && php bin/magento setup:install --base-url=http://demo.magento2.zipmoney.com.au/ \
+      command "cd /var/www/magento2  && php bin/magento setup:install --base-url=http://demo.magento2.zipmoney.com.au/ \
 --db-host=localhost --db-name=magento2 --db-user=root --db-password=mysqlroot \
 --admin-firstname=Sagar --admin-lastname=Bhandari --admin-email=sagar.bhandari@zipmoney.com.au \
 --admin-user=admin --admin-password=admin123 --language=en_US \
@@ -52,7 +66,7 @@ case node[:platform]
     end 
 
     execute "Upgrade" do
-      command "cd /var/www/html && php bin/magento setup:upgrade "
+      command "cd /var/www/magento2 && php bin/magento setup:upgrade "
       action :run    
     end
 

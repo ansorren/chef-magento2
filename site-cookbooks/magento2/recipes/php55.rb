@@ -56,8 +56,8 @@ case node[:platform]
         action :install
     end
 
-    apt_repository "php5-5.6" do
-        uri "http://ppa.launchpad.net/ondrej/php5/ubuntu"
+    apt_repository "php5.6" do
+        uri "http://ppa.launchpad.net/ondrej/php/ubuntu"
         distribution node["lsb"]["codename"]
         components ["main"]
         keyserver "keyserver.ubuntu.com"
@@ -65,8 +65,8 @@ case node[:platform]
     end
 
     # Manually install php55 to avoid the permission error using chefs package install.
-    execute "Install php55" do 
-      command "apt-get update -y && apt-get install -y php5"
+    execute "Install php5.6" do 
+      command "apt-get update -y && apt-get install -y php5.6"
       action :run
     end
 
