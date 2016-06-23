@@ -1,3 +1,1 @@
-#
-default['mysql']['version'] = '5.6'
-
+override['php-fpm']['package_name'] = "php5.6-fpm"

@@ -8,3 +8,4 @@ version          '0.1.0'
 
 
 depends 'mysql', '~> 7.0'
+depends 'php-fpm', '~> 0.7.5'

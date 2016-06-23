@@ -71,11 +71,10 @@ case node[:platform]
     end
 
     # Install  php fpm
-    execute "Install php5.6 fpm" do
-      command "apt-get install -y php5.6-fpm"
-      action :run
-    end
-
+    # execute "Install php5.6 fpm" do
+    #   command "apt-get install -y php5.6-fpm"
+    #   action :run
+    # end
 
     template 'magento2.conf' do
       path   "/etc/nginx/sites-available/magento2"

@@ -63,7 +63,7 @@ case node[:platform]
 
 
     execute "Setup" do
-      command "cd /var/www/magento2  && php bin/magento setup:install --base-url=http://demo.magento2.zipmoney.com.au/ \
+      command "cd /var/www/magento2  && php bin/magento setup:install --base-url=http://mage2.local/ \
 --db-host=localhost --db-name=magento2 --db-user=root --db-password=mysqlroot \
 --admin-firstname=Sagar --admin-lastname=Bhandari --admin-email=sagar.bhandari@zipmoney.com.au \
 --admin-user=admin --admin-password=admin123 --language=en_US \
@@ -85,6 +85,5 @@ case node[:platform]
     #   command "cd /var/www/html && php bin/magento setup:upgrade"
     #   action :run
     # end
-
 
   end

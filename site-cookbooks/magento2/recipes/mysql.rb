@@ -1,7 +1,7 @@
 
-execute "Install php5.6" do
-    command "apt-get install -y mysql-client-core-5.6"
-    action :run
+execute "Install MySQL Client Core" do
+  command "apt-get install -y mysql-client-core-5.6"
+  action :run
 end
 
 
