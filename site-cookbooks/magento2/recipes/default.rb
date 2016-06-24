@@ -20,7 +20,7 @@ case node[:platform]
 
     #  Install Composer
     execute "Install Composer" do
-      command "if ls -la /usr/local/bin/composer/; then curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer; fi"
+      command "curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer"
       action :run
     end
 
@@ -81,9 +81,9 @@ case node[:platform]
       action :run
     end
 
-    # execute "Sample Data" do
-    #   command "cd /var/www/html && php bin/magento setup:upgrade"
-    #   action :run
-    # end
+    execute "Sample Data" do
+     command "cd /var/www/html && php bin/magento setup:upgrade"
+     action :run
+    end
 
   end
